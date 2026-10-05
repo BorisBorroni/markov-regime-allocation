@@ -1,11 +1,13 @@
-"""Nucleo a rischio ponderato, regola di esposizione e motore di simulazione con costi.
+"""Nucleo a rischio ponderato, regola di esposizione e simulazione con costi.
 
-Tempi: il segnale e' calcolato con i dati fino alla chiusura del giorno d (ultimo giorno
-di borsa della settimana); l'ordine e' eseguito alla chiusura del giorno successivo e il
-portafoglio guadagna dal rendimento del giorno ancora dopo. Tra un ribilanciamento e
-l'altro i pesi derivano con i prezzi. Il costo si applica al turnover delle sole gambe
-rischiose; la liquidita' non ha costo. I pesi derivano con il rendimento lordo del giorno; il costo dell'ordine
-si sottrae al rendimento di quel giorno e i nuovi pesi sono quelli obiettivo (approssimazione di secondo ordine).
+Tempi: il segnale usa i dati fino alla chiusura del giorno d (ultimo giorno di borsa
+della settimana). L'ordine viene eseguito alla chiusura del giorno dopo e il portafoglio
+guadagna dal rendimento del giorno ancora successivo. Tra un ribilanciamento e l'altro i
+pesi derivano con i prezzi.
+
+Costi: si applicano al turnover delle sole gambe rischiose (la liquidita' non ha costo).
+Il costo dell'ordine si sottrae al rendimento di quel giorno e i nuovi pesi sono quelli
+obiettivo (approssimazione di secondo ordine).
 """
 import numpy as np
 import pandas as pd
