@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "markov-regime-allocation"
+version = "0.1.0"
+description = "Allocazione tra asset guidata dalla probabilita' di stress stimata con una catena di Markov, confrontata con regole piu' semplici"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas"]
+
+[project.optional-dependencies]
+dati = ["requests"]
+notebook = ["matplotlib", "nbformat", "nbclient", "ipykernel"]
+dev = ["pytest", "pytest-cov", "ruff==0.16.8", "matplotlib"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "B"]
+ignore = ["E501"]

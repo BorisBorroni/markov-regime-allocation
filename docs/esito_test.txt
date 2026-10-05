@@ -1,0 +1,65 @@
+Modo test: dati fino al 2026-06-30, finestra di valutazione 2015-01-01 -> 2026-06-30
+Configurazioni: {"base": {"m": 0.8, "q_alto": 0.9, "r": 0.25}, "hmm": {"m": 1.0, "q_alto": null, "r": 0.5}, "logistica": {"m": 0.8, "q_alto": 0.9, "r": 0.25}, "multi": {"m": 0.8, "q_alto": 0.9, "r": 0.25}, "stato": {"m": 0.8, "q_alto": 0.9, "r": 0.25}, "trend_finestra": 200, "vol_target": {"m": 0.8, "q_alto": null, "r": null}}
+
+Metriche nella finestra (5 bp):
+                      sharpe  rendimento  volatilita  drawdown  turnover_annuo  esposizione_media
+mercato                0.697       0.140       0.182    -0.342           0.087              0.999
+60_40                  0.671       0.090       0.106    -0.209           0.225              1.000
+nucleo_statico         0.792       0.079       0.073    -0.153           1.550              1.000
+esposizione_costante   0.793       0.060       0.049    -0.102           1.040              0.670
+vol_target             0.770       0.058       0.048    -0.087           1.705              0.710
+vol_target_pari        0.765       0.055       0.045    -0.083           1.634              0.670
+trend                  0.665       0.056       0.053    -0.084           4.991              0.711
+hmm                    0.766       0.061       0.052    -0.083           2.422              0.805
+logistica              0.768       0.055       0.044    -0.066           2.064              0.678
+stato                  0.769       0.055       0.044    -0.073           2.285              0.675
+base                   0.775       0.055       0.044    -0.071           2.120              0.672
+multi                  0.753       0.054       0.044    -0.066           2.155              0.670
+Vol targeting a esposizione pari: m_d=0.747
+
+Bootstrap stazionario (10000 ricampionamenti, blocco medio 20): differenza multi meno controllo
+(dDD = drawdown multi meno drawdown controllo: positivo = multi meno profonda)
+  contro vol_target_pari        dSharpe=-0.012 IC95=[-0.106, +0.082]  dDD=+0.017 IC95=[-0.008, +0.023]
+  contro esposizione_costante   dSharpe=-0.039 IC95=[-0.274, +0.211]  dDD=+0.037 IC95=[-0.021, +0.048]
+  contro vol_target             dSharpe=-0.016 IC95=[-0.110, +0.080]  dDD=+0.021 IC95=[-0.004, +0.031]
+  contro stato                  dSharpe=-0.016 IC95=[-0.136, +0.094]  dDD=+0.007 IC95=[-0.026, +0.012]
+  contro base                   dSharpe=-0.021 IC95=[-0.087, +0.041]  dDD=+0.006 IC95=[-0.017, +0.006]
+  contro hmm                    dSharpe=-0.013 IC95=[-0.083, +0.057]  dDD=+0.017 IC95=[+0.003, +0.030]
+  contro logistica              dSharpe=-0.014 IC95=[-0.068, +0.035]  dDD=-0.000 IC95=[-0.013, +0.005]
+  contro trend                  dSharpe=+0.088 IC95=[-0.182, +0.382]  dDD=+0.018 IC95=[-0.021, +0.044]
+  contro nucleo_statico         dSharpe=-0.039 IC95=[-0.275, +0.212]  dDD=+0.087 IC95=[+0.015, +0.119]
+  contro mercato                dSharpe=+0.057 IC95=[-0.411, +0.492]  dDD=+0.276 IC95=[+0.115, +0.423]
+  contro 60_40                  dSharpe=+0.082 IC95=[-0.322, +0.474]  dDD=+0.144 IC95=[+0.047, +0.230]
+
+Sottoperiodi (divisione al 2020-01-01), differenza di Sharpe multi meno controllo:
+  contro vol_target_pari        prima parte -0.041  seconda parte -0.009
+  contro esposizione_costante   prima parte -0.006  seconda parte -0.165
+
+Sensibilita' ai costi, differenza di Sharpe multi meno vol targeting a esposizione pari:
+     0 bp: -0.005
+    10 bp: -0.018
+    25 bp: -0.038
+
+Commissione di performance annua (multi contro vol targeting a esposizione pari):
+  gamma= 1: -13.7 punti base
+  gamma= 5: -11.6 punti base
+  gamma=10: -8.9 punti base
+
+Alfa della multi sul nucleo statico (rendimenti in eccesso, Newey-West):
+  ritardi 20: alfa annuo +0.13%, t=+0.24, beta=0.55
+  ritardi 60: alfa annuo +0.13%, t=+0.24, beta=0.55
+
+Deflated Sharpe della multi con 60 tentativi (varianza degli Sharpe dalle griglie di sviluppo): 0.982
+
+Deflated Sharpe della multi con 192 tentativi (varianza degli Sharpe dalle griglie di sviluppo): 0.979
+
+Tabella per regime (stato del giorno prima), multi e nucleo statico:
+         multi                                      nucleo                               
+  quota_giorni eccesso_annuo volatilita_annua quota_giorni eccesso_annuo volatilita_annua
+0        0.232         0.035            0.042        0.232         0.035            0.050
+1        0.664         0.035            0.044        0.664         0.054            0.068
+2        0.103         0.016            0.047        0.103         0.138            0.130
+
+Placebo con p traslata ciclicamente (1000 traslazioni): quota con Sharpe pari o superiore = 0.427
+
+FINE ANALISI

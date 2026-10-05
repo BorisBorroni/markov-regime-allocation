@@ -1,0 +1,33 @@
+{
+ "base": {
+  "m": 0.8,
+  "q_alto": 0.9,
+  "r": 0.25
+ },
+ "hmm": {
+  "m": 1.0,
+  "q_alto": null,
+  "r": 0.5
+ },
+ "logistica": {
+  "m": 0.8,
+  "q_alto": 0.9,
+  "r": 0.25
+ },
+ "multi": {
+  "m": 0.8,
+  "q_alto": 0.9,
+  "r": 0.25
+ },
+ "stato": {
+  "m": 0.8,
+  "q_alto": 0.9,
+  "r": 0.25
+ },
+ "trend_finestra": 200,
+ "vol_target": {
+  "m": 0.8,
+  "q_alto": null,
+  "r": null
+ }
+}
